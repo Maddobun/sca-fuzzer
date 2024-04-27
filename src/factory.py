@@ -10,6 +10,7 @@ from typing import Tuple, Dict, Type, List, Callable
 from . import input_generator, analyser, coverage, postprocessor, interfaces, model
 from .x86 import x86_model, x86_executor, x86_fuzzer, x86_generator, get_spec
 from .config import CONF, ConfigException
+from .riscv import get_spec as get_rv_spec  
 
 GENERATORS: Dict[str, Type[interfaces.Generator]] = {
     "x86-64-random": x86_generator.X86RandomGenerator
@@ -68,6 +69,7 @@ MINIMIZERS: Dict[str, Type[interfaces.Minimizer]] = {
 
 SPEC_DOWNLOADERS: Dict[str, Type] = {
     'x86-64': get_spec.Downloader,
+    'riscv': get_rv_spec.Downloader
 }
 
 
